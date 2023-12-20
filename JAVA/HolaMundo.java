@@ -24,5 +24,8 @@ class HolaMundo {   // El nombre de la clase SIEMPRE va en mayúsculas !!!!!
         System.out.println("3+3: ");
         System.out.println(3+3);
         System.out.println("3+3: " + (3+3));
+
+        char letra = "a";
+        System.out.println("letra: " + letra);
     }
 }
