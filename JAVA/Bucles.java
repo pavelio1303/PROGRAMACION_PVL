@@ -1,5 +1,14 @@
+import java.util.Scanner;
+
 class Bucles {
     public static void main(String[] args){
+
+        Scanner sc = new Scanner(System.in);
+
+        int numero;
+
+        String palabra = "";
+        boolean salir = false;
 
         // For each -> for num in listaNum
         String[] listaAzules = {"Azul", "Añil","Indigo","Cobalto","Klein","Celeste"};
@@ -33,14 +42,41 @@ class Bucles {
         }
 
         // Bucle While
+/*
         salir = false;
         int contador = 5;
         while (!salir){
-            System.out.println("Escribe salir:");
+            System.out.println("Escribe salir: ");
             palabra = sc.nextLine();
             if (palabra.equals("salir")){
                 salir = true;
             }
         }
+*/
+        // Refactorización del bucle while de arriba
+        while (!palabra.equals("salir")){
+            System.out.println("Escribe salir: ");
+            palabra = sc.nextLine();
+        }
+
+        // Bucles for como while [!] ESTO ES UNA BASURA ES SOLO POR SABER
+        System.out.println("Bucle for como while");
+        // OJO -> Con los huequitos en el for...
+        for( palabra = "" ; !palabra.equals("salir") ; ){ 
+            System.out.println("Escribe salir: ");
+            palabra = sc.nextLine();
+        }
+
+        // Bucles doWhile
+        System.out.println("Bucles doWhile");
+        do{
+            System.out.println("Escribe salir: ");
+            palabra = sc.nextLine();
+        }while (!palabra.equals("salir"));
+
+        do{
+            System.out.println("Escribe un número entre el 1 y el 50: ");
+            numero = sc.nextInt();
+        }while (numero<1 || numero>50);
     }
 }
