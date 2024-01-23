@@ -1,6 +1,45 @@
 import java.util.Scanner;
 
 class EjerBucles{
+
+    public static void solicitarLetraMinuscula(){
+
+        Scanner sc = new Scanner(System.in);
+        // String letraString;
+        char letra;
+
+        /* **Letra**: Solicita una letra, si dato introducido no es 
+        una letra, vuelve a solicitar la letra. 
+        */
+
+        // sc.nextLine() devuelve un string.
+        // Con un string podemos llamar a la función charAt(indice)
+        // que te devuelve el char que hay en la posición indice.
+        // Ej. Si introduce la palabra "patata" coge la 'p'
+
+        do {
+
+            System.out.println("Introduce una letra minúscula: ");
+            // letraString = sc.nextLine();
+            // letra = letraString.charAt(0);
+            letra = sc.nextLine().charAt(0);
+
+        } while (!(letra >= 'a' && letra <= 'z'));
+
+    }
+
+    public static boolean numeroEsPar(int numero){
+        //System.out.println("Estoy dentro de la funcion esPar");
+        return numero%2 == 0;
+    }
+
+    public static int minimoComunMult(int numero){
+        divisor = 2;
+
+        for
+    }
+
+
     public static void main (String[] args){
 
         Scanner sc = new Scanner(System.in);
