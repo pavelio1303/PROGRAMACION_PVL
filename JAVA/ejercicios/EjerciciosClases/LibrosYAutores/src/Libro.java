@@ -1,10 +1,17 @@
+import java.util.ArrayList;
+
 public class Libro {
 
     // [!] ATRIBUTOS [!]
+    // [!] Atributos de instancia [!]
     private String titulo;
     private String autor;
     private final int ISBN;
-    private int numPaginas;
+    private int numPaginas= 0;
+
+    // [!] Atributos de clase [!]
+    // Es propio de la clase y no de cada uno de los objetos que la componen.
+    private static int numMaximoLetras = 5;
 
     // [!] CONSTRUCTORES [!]
     /**
@@ -14,7 +21,7 @@ public class Libro {
      * @param ISBN El ISBN del libro.
      */
     public Libro(String titulo, int ISBN){
-        this.titulo = titulo;
+        this.setTitulo(titulo);
         this.autor = "desconocido";
         this.ISBN = ISBN;
         this.numPaginas = 0;
@@ -29,7 +36,7 @@ public class Libro {
      * @param numPaginas El numero de páginas del libro.
      */
     public Libro(String titulo,String autor, int ISBN, int numPaginas){
-        this.titulo = titulo;
+        this.setTitulo(titulo);
         this.autor = autor;
         this.ISBN = ISBN;
         this.numPaginas = numPaginas;
@@ -75,6 +82,23 @@ public class Libro {
      */
     public void setTitulo(String titulo){
         this.titulo = titulo;
+       if (titulo.length() > this.numMaximoLetras) this.titulo = titulo.substring(0, this.numMaximoLetras);
+    }
+
+    /**
+     * Nuestro SPLIT()
+     */
+    private static void nuestroSplit(String frase, char separador){
+        ArrayList<String> listaPalabras = new ArrayList<String>();
+        String palabra = "";
+        for (int i = 0 ; i < frase.length() ; i++){
+            if (letra != separador){
+                    palabra += frase.charAt(i);
+            } else {
+                listaPalabras.add(palabra);
+                palabra = "";
+            }
+        }
     }
 
     /**
@@ -90,7 +114,7 @@ public class Libro {
      * @param numPaginas El nuevo número de páginas del libro.
      */
     public void setNumPaginas(int titulo){
-        this.numPaginas = numPaginas;
+        if (numPaginas >= 0) this.numPaginas = numPaginas;
     }
 
     // [!] TOSTRING [!]
@@ -111,3 +135,12 @@ public class Libro {
         System.out.println("El libro 2 es: " + libro2);
     }
 }
+
+/**
+ * El número de páginas introducidas no puede ser menor que 0. 
+ * Si al crear el objeto, se introduce un número de páginas negativa, se cambia a 0.
+ * Si al cambiar el valor del número de páginas es negativa, se deja el que estaba.
+ * 
+ * Tanto el título como el autor no pueden tener más de 20 carácteres.
+ * En caso de que tengan más, el título se trunca y en el autor se ponen las iniciales.
+ */
