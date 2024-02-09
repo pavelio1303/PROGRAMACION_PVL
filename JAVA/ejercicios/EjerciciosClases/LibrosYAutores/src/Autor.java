@@ -8,6 +8,8 @@ public class Autor{
     // No hace falta la clase Libro porque está en el mismo paquete. LIBROSYAUTOR
     private ArrayList<Libro> librosEscritos;
 
+    private static int numMaximoLetras = 5;
+
     public Autor(String nombre, ArrayList<Libro> librosEscritos){
         this.nombre = nombre;
         this.nacionalidad = "";
@@ -64,30 +66,58 @@ public class Autor{
 
     public void setNombre(String nombre){
         this.nombre = nombre;
+        if (nombre.length() > this.numMaximoLetras){
+            this.nombre = "";
+            String[] nombrePorPalabras = nombre.split(" ");
+            for (int i = 0 ; i < nombrePorPalabras.length ; i++){
+                this.nombre += nombrePorPalabras[i].charAt(0) + ".";
+            }
+        }
     }
 
     public void setNacionalidad(String nacionalidad){
         this.nacionalidad = nacionalidad;
     }
-
     public void setAnioNacimiento(int anioNacimiento){
         this.anioNacimiento = anioNacimiento;
     }
-
     public void setAnioMuerte(int anioMuerte){
         this.anioMuerte = anioMuerte;
+    }
+    public void setLibrosEscritos(ArrayList<Libro> librosEscritos){
+        this.librosEscritos = (ArrayList)librosEscritos.clone();
     }
 
     // Falta set de libros escritos...
 
     public String toString(){
-        return  "El autor " + this.nacionalidad + " " + this.nombre + 
-                ", nacido en " + this.anioNacimiento + 
-                " ha escrito los siguientes libros: " + this.librosEscritos;
+        String salida = "El autor " + this.nacionalidad + " " + this.nombre;
+
+        if (this.anioMuerte != 0) salida += " ( " + this.anioNacimiento + "-" + this.anioMuerte + " )";
+        else salida +=  ", nacido en " + this.anioNacimiento;
+
+        salida += ", ha escrito los siguientes libros: ";
+
+        for (int i = 0 ; i < librosEscritos.size() ; i++){
+            salida += librosEscritos.get(i).getTitulo() + " - ";
+        }
+
+        return salida;
     }
 
 //=================================================================================
     public static void main (String[] args){
-       
+        Libro libro1 = new Libro("Las tempestalidas",123456789);
+        Libro libro2 = new Libro("Juego de tronos", "R. R. Martin", 987654321,1998,-56);
+        Libro libro3 = new Libro("Cien años de soledad", "Gabriel García Marquez", 741852963,1800,600);
+        ArrayList<Libro> listaLibros = new ArrayList<Libro>();
+
+        listaLibros.add(libro1);
+        listaLibros.add(libro2);
+        listaLibros.add(libro3);
+
+        Autor autor1 = new Autor("Gabriel García Marquez",listaLibros);
+
+        System.out.println(autor1);
     }
 }

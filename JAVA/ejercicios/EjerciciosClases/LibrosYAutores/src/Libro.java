@@ -8,10 +8,11 @@ public class Libro {
     private String autor;
     private final int ISBN;
     private int numPaginas= 0;
+    private int fechaPublicacion; // año.
 
     // [!] Atributos de clase [!]
     // Es propio de la clase y no de cada uno de los objetos que la componen.
-    private static int numMaximoLetras = 5;
+    private static int numMaximoLetras = 15;
 
     // [!] CONSTRUCTORES [!]
     /**
@@ -25,6 +26,7 @@ public class Libro {
         this.autor = "desconocido";
         this.ISBN = ISBN;
         this.numPaginas = 0;
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     /**
@@ -35,11 +37,22 @@ public class Libro {
      * @param ISBN El ISBN del libro.
      * @param numPaginas El numero de páginas del libro.
      */
-    public Libro(String titulo,String autor, int ISBN, int numPaginas){
+    public Libro(String titulo,String autor, int ISBN, int numPaginas, int fechaPublicacion){
         this.setTitulo(titulo);
-        this.autor = autor;
+        this.setAutor(autor);
         this.ISBN = ISBN;
+        // Opción 1:
+        this.numPaginas = 0;
+        this.setNumPaginas(numPaginas); //if (numPaginas > 0) this.numPaginas = numPaginas;
+        /*
+        // Opción 2:
         this.numPaginas = numPaginas;
+        if (numPaginas <= 0)  this.numPaginas = 0;
+        // Opción 3:
+        if (numPaginas <= 0) numPaginas = 0;
+        this.numPaginas = numPaginas;
+        */
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     // [!] GET [!]
@@ -91,14 +104,17 @@ public class Libro {
     private static void nuestroSplit(String frase, char separador){
         ArrayList<String> listaPalabras = new ArrayList<String>();
         String palabra = "";
-        for (int i = 0 ; i < frase.length() ; i++){
-            if (letra != separador){
-                    palabra += frase.charAt(i);
+        for(int i = 0; i < frase.length() ; i++){
+            if (frase.charAt(i) != separador){
+                palabra += frase.charAt(i);
             } else {
                 listaPalabras.add(palabra);
                 palabra = "";
             }
         }
+        if (!palabra.equals("")) listaPalabras.add(palabra);
+
+        System.out.println(listaPalabras);
     }
 
     /**
@@ -107,14 +123,25 @@ public class Libro {
      */
     public void setAutor(String autor){
         this.autor = autor;
+        if (autor.length() > this.numMaximoLetras){
+            this.autor = "";
+            String[] autorPorPalabras = autor.split(" ");
+            for (int i = 0 ; i < autorPorPalabras.length ; i++){
+                this.autor += autorPorPalabras[i].charAt(0) + ".";
+            }
+        }
     }
 
     /**
-     * Establecer el número de páginas del libro.
+     * Establecer el número de páginas del libro. 
      * @param numPaginas El nuevo número de páginas del libro.
      */
-    public void setNumPaginas(int titulo){
-        if (numPaginas >= 0) this.numPaginas = numPaginas;
+    public void setNumPaginas(int numPaginas){
+        if (numPaginas >= 0 ) this.numPaginas = numPaginas;
+    }
+    // Asumo que el dato es correcto.
+    public void setFechaPublicacion(int fechaPublicacion){
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     // [!] TOSTRING [!]
@@ -128,11 +155,25 @@ public class Libro {
 
     // [!] MAIN [!]
     public static void main(String[] args){
-        Libro libro1 = new Libro("Las tempestalidad",123456789);
-        Libro libro2 = new Libro("Juego de Tronos", "R. R. Martin", 987654321, 568);
+        // Prueba los dos constructores.
+        Libro libro1 = new Libro("Las tempestálidas","Georgi Gospodinov", 841761,2020,400);
+        Libro libro2 = new Libro("Como matar a tu familia","Bella Mackie",849129,2021,400);
+        Libro libro3 = new Libro("Oso","Marian Engel",841597,1976,168);
+ 
+        System.out.println("libro1 -> " + libro1);
+        System.out.println("libro2 -> " + libro2);
+        System.out.println("libro3 -> " + libro3);
+        // Prueba setNumPaginas con un valor válido.
+        libro1.setNumPaginas(400);
+        System.out.println("libro1 -> " + libro1);
+        // Prueba setNumPaginas con un valor inválido.
+        libro1.setNumPaginas(-200);
+        System.out.println("libro1 -> " + libro1);
+        /*// Prueba setAutor con un nombre largo.
+        libro1.setAutor("Gabriel García Marquez");
+        System.out.println("libro1 -> " + libro1);*/
 
-        System.out.println("El libro 1 es: " + libro1);
-        System.out.println("El libro 2 es: " + libro2);
+        nuestroSplit("la casa verde",' ');
     }
 }
 
