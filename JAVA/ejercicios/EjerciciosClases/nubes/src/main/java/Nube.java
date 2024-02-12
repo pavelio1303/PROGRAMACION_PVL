@@ -36,6 +36,14 @@ public class Nube {
         this.tamanio = n.tamanio;
     }
 
+    public void unir(Nube n){   // Terminar
+        if(this.altura == n.altura){
+            this.tamanio += n.tamanio;
+            n.tamanio = 0;
+            n.altura = 0;
+        }
+    }
+
     public double getAltura() {
         return this.altura;
     }
