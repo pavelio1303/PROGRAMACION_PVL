@@ -76,9 +76,15 @@ public class Nube {
         return this.altura;
     }
 
-    public void puedeLlover(Nube n){
-        if(n.altura > 1000 && n.tamanio > 200) System.out.println("Puede llover monstro.");
-        else System.out.println("No va a llover fiera.");
+    public boolean puedeLlover(){
+        return this.tamanio>=200 && this.altura>=1000;
+    }
+
+    public double llover(){
+        if(this.puedeLlover()){
+            this.tamanio /= 3;
+        }
+        return this.tamanio;
     }
 
     public String toString(){

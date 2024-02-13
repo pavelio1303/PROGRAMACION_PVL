@@ -44,10 +44,25 @@ public class NubeTest {
     }
 
     @Test
-    public void testLlueve(){
-        Nube nube1 = new Nube(TiposDeNube.CUMULOS,75,40);
-        Nube nube2 = new Nube(TiposDeNube.CUMULOS,1005,320);
+    public void testPuedeLlover(){
+        Nube nube1 = new Nube(TiposDeNube.CUMULOS,2000,300);
+        assertTrue(nube1.puedeLlover());
+        assertEquals(100, nube1.llover());
 
-        assertEquals("No va a llover fiera.", nube1.puedeLlover(nube1));
+        nube1.setTamanio(10);
+        assertFalse(nube1.puedeLlover());
+        assertEquals(10, nube1.llover());  // No cambia porque no llueve al tener un tamaño menor que 200
+
+        nube1.setAltura(900);
+        assertFalse(nube1.puedeLlover());
+        assertEquals(10, nube1.llover());
+
+        nube1.setTamanio(200);
+        assertFalse(nube1.puedeLlover());
+        assertEquals(200, nube1.llover());
+
+        nube1.setAltura(1000);
+        assertTrue(nube1.puedeLlover());
+        assertEquals(200/3.0, nube1.llover());
     }
 }
