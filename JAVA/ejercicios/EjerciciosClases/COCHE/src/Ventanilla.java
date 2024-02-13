@@ -5,21 +5,21 @@ public class Ventanilla {
     private boolean estado; // Subida o bajada.
 
     public Ventanilla(){
-        this.transparencia = True;
+        this.transparencia = true;
         this.tamanio = 15;
-        this.estado = True;
+        this.estado = true;
     }
 
     public Ventanilla(boolean transparencia, double tamanio){
         this.transparencia = transparencia;
         this.tamanio = tamanio;
-        this.estado = True;
+        this.estado = true;
     }
 
     public Ventanilla(Ventanilla v){
         this.transparencia = v.transparencia;
         this.tamanio = v.tamanio;
-        this.estado = v.True;
+        this.estado = v.estado;
     }
 
     public boolean getTransparencia(){
@@ -34,16 +34,46 @@ public class Ventanilla {
         return this.estado;
     }
 
-    public void setTransparencia(boolean transparencia){
+    private void setTransparencia(boolean transparencia){
         this.transparencia = transparencia;
     }
 
-    public void setTamanio(double tamanio){
+    private void setTamanio(double tamanio){
         this.tamanio = tamanio;
     }
 
-    public void setEstado(boolean estado){
+    private void setEstado(boolean estado){
         this.estado = estado;
+    }
+
+    public void bajarVentanilla(){
+        this.setEstado(false);   
+    }
+
+    public void subirVentanilla(){
+        this.setEstado(true);
+    }
+
+    public void tintarCristales(){
+        this.setTransparencia(false);
+    }
+
+    public void destintarCristales(){
+        this.setTransparencia(true);
+    }
+
+    public String toString(){
+        String salida = "La ventanilla es ";
+
+        if(this.transparencia) salida += "transparente. ";
+        else salida += "de cristal tintado.";
+
+        salida += "Es de tamaño " + this.tamanio + " y está ";
+
+        if(this.estado) salida += "subida. ";
+        else salida += "bajada. ";
+
+        return salida;
     }
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
