@@ -1,3 +1,5 @@
+package com.stem;
+
 import java.util.Scanner;
 
 public class Nube {
@@ -36,12 +38,51 @@ public class Nube {
         this.tamanio = n.tamanio;
     }
 
-    public void unir(Nube n){   // Terminar
+    public double unir(Nube n){   // Terminar
+        double salida = -1;
         if(this.altura == n.altura){
             this.tamanio += n.tamanio;
             n.tamanio = 0;
             n.altura = 0;
+            salida = this.tamanio;
         }
+        return salida;
+    }
+
+    public double crecer(){
+        this.tamanio *= 1.5;
+        return this.tamanio;
+    }
+
+    /**
+     * 
+     * @param metros
+     * @return
+     */
+    public double sube(double metros){
+        if(metros > 0) this.altura += metros;
+        else this.baja(-metros);
+        return this.altura;
+    }
+
+    /**
+     * 
+     * @param metros
+     * @return
+     */
+    public double baja(double metros){
+        if(metros > 0) this.altura -= metros;
+        if(this.altura < 0) this.altura = 0;
+        return this.altura;
+    }
+
+    public void puedeLlover(Nube n){
+        if(n.altura > 1000 && n.tamanio > 200) System.out.println("Puede llover monstro.");
+        else System.out.println("No va a llover fiera.");
+    }
+
+    public String toString(){
+        return "altura: " + this.altura + ". tamaño: " + this.tamanio;
     }
 
     public double getAltura() {
