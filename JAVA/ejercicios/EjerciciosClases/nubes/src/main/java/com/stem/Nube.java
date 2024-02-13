@@ -38,6 +38,22 @@ public class Nube {
         this.tamanio = n.tamanio;
     }
 
+    public double getAltura() {
+        return this.altura;
+    }
+
+    public double getTamanio() {
+        return this.tamanio;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public void setTamanio(double tamanio) {
+        this.tamanio = tamanio;
+    }
+
     public double unir(Nube n){   // Terminar
         double salida = -1;
         if(this.altura == n.altura){
@@ -90,23 +106,6 @@ public class Nube {
     public String toString(){
         return "altura: " + this.altura + ". tamaño: " + this.tamanio;
     }
-
-    public double getAltura() {
-        return this.altura;
-    }
-
-    public double getTamanio() {
-        return this.tamanio;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public void setTamanio(double tamanio) {
-        this.tamanio = tamanio;
-    }
-
     public static void main(String[] args) {
         Nube nube1 = new Nube(TiposDeNube.NIMBOS, 10, 30);
         //Nube nube1 = new Nube(NIMBOS, 10, 30);    - ERROR -
