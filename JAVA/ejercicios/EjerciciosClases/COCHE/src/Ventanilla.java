@@ -66,7 +66,7 @@ public class Ventanilla {
         String salida = "La ventanilla es ";
 
         if(this.transparencia) salida += "transparente. ";
-        else salida += "de cristal tintado.";
+        else salida += "de cristal tintado. ";
 
         salida += "Es de tamaño " + this.tamanio + " y está ";
 
@@ -75,7 +75,11 @@ public class Ventanilla {
 
         return salida;
     }
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+    public static void main(String[] args){
+        Ventanilla ventanilla1 = new Ventanilla();
+        System.out.println(ventanilla1);
+        ventanilla1.bajarVentanilla();
+        ventanilla1.tintarCristales();
+        System.out.println(ventanilla1);
     }
 }
