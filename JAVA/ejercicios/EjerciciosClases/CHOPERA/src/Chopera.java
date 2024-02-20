@@ -39,8 +39,8 @@ public class Chopera {
         this.setNumFilas(numFilas);
         this.numColumnas = 0;
         this.setNumColumnas(numColumnas);
-        this.edadChopera = 0;
-        this.setEdadChopera(3);
+        int edadChopera = 0;
+
         this.matrizDeChopos = new ArrayList<ArrayList<Chopo>>();
 
          // Un chopo genérico.
@@ -53,12 +53,14 @@ public class Chopera {
                 double diametroAleatorio = (Math.round(Math.random()*4500)/100.0);
                 int edadAleatoria = (int)Math.floor((Math.random()*3)+1);
 
+                if (edadAleatoria>edadChopera) edadChopera = edadAleatoria;
+
                 Chopo chopoAleatorio= new Chopo(alturaAleatoria,diametroAleatorio,edadAleatoria);
 
                 matrizDeChopos.get(i).add(chopoAleatorio);
             }
         }
-
+        this.edadChopera = edadChopera;
     }
     // Constructor de copia.
     public Chopera(Chopera c){

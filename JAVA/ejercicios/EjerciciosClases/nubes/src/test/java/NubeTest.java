@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import com.stem.*;
-import com.stem.Nube.TiposDeNube; //Lo hemos metido aqui porque por algún motivo el com.stem.* no ha cogido Nube.
+import com.stem.Nube.TiposDeNube; //Lo hemos metido aqui porque por algún motivo el com.stem.* no ha cogido TiposDeNube.
 
 public class NubeTest {
     
