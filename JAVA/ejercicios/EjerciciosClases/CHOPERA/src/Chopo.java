@@ -1,15 +1,14 @@
-public class Chopo {
-    private double altura;  // 3-6-9
-    private double diametro;    // 15-30-45
-    private int edad;   // 1-2-3
+public class Chopo{
+    private double altura; // 3-6-9
+    private double diametro; // 15-30-45
+    private int edad; // 1-2-3
 
     public Chopo(){
         this.altura = 0;
         this.diametro = 0;
         this.edad = 0;
     }
-
-    public Chopo(double altura, double diametro, int edad){
+    public Chopo(double altura , double diametro , int edad){
         this.altura = 0;
         this.setAltura(altura);
         this.diametro = 0;
@@ -17,7 +16,6 @@ public class Chopo {
         this.edad = 0;
         this.setEdad(edad);
     }
-
     public Chopo(Chopo c){
         this.altura = c.altura;
         this.diametro = c.diametro;
@@ -27,11 +25,9 @@ public class Chopo {
     public double getAltura() {
         return this.altura;
     }
-
     public double getDiametro() {
         return this.diametro;
     }
-
     public int getEdad() {
         return this.edad;
     }
@@ -39,22 +35,23 @@ public class Chopo {
     public void setAltura(double altura) {
         if (altura > 0) this.altura = altura;
     }
-
     public void setDiametro(double diametro) {
         if (diametro > 0) this.diametro = diametro;
     }
-
     public void setEdad(int edad) {
         if (edad > 0) this.edad = edad;
     }
 
+    public String toStringBonito(){
+        return "El chopo de " + this.edad + " años de edad, mide " + this.altura + " y tiene un diametro de " + this.diametro + ".";
+    }
     public String toString(){
-        return "El chopo mide " + this.altura + " metros, tiene un diámetro de " 
-        + this.diametro + " cm y una edad de " + this.edad + " años. ";
+        return "" + this.edad + "-" + this.altura + "-" + this.diametro + "";
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Chopo chopo1 = new Chopo();
         System.out.println(chopo1);
     }
+
 }
