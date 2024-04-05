@@ -98,8 +98,10 @@ public abstract class Mascota {
     }
     
     public static void main(String[] args){
-        
-        /*System.out.println("Hola, soy una mascota!");
+        // Quitamos el main porque al hacer la clase abstracta, 
+        // no podemos instanciar la clase Mascota.
+        /*
+        System.out.println("Hola, soy una mascota!");
         Mascota mascotaPorDefecto = new Mascota();
         System.out.println(mascotaPorDefecto);
 
@@ -111,7 +113,8 @@ public abstract class Mascota {
         Mascota mascotaPorCopia = new Mascota(mascotaParametros);
         System.out.println(mascotaPorCopia);
 
-        System.out.println(mascotaPorDefecto.dormir());*/
+        System.out.println(mascotaPorDefecto.dormir());
+        */
 
     }
 }
