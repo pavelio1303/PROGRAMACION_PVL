@@ -6,7 +6,7 @@ public abstract class Bombilla {
     }
 
     public Bombilla(int luminosidad){
-        this.luminosidad=800;
+        this();
         this.setLuminosidad(luminosidad);
     }
 
@@ -21,6 +21,6 @@ public abstract class Bombilla {
     abstract public String iluminar();
 
     public String toString(){
-        return "Es una bombilla de " + this.getLuminosidad() + " lúmenes.";
+        return "Es una bombilla de " + this.luminosidad + " lúmenes ";
     }
 }
